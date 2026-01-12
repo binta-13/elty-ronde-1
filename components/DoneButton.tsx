@@ -8,7 +8,7 @@ interface DoneButtonProps {
 
 export function DoneButton({ onClick }: DoneButtonProps) {
   return (
-    <div className="flex justify-center px-4 pt-5">
+    <div className="flex justify-center px-4 pt-5 pb-2">
       <Button
         variant="orange"
         size="done"
