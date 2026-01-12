@@ -16,21 +16,25 @@ export default function Home() {
     { id: 2, name: "Page 2", checked: false },
     { id: 3, name: "Page 3", checked: false },
     { id: 4, name: "Page 4", checked: false },
+    { id: 5, name: "Page 5", checked: false },
+    { id: 6, name: "Page 6", checked: false },
   ])
 
   const handleAllPagesChange = (checked: boolean) => {
     setAllPagesChecked(checked)
-    setPages(pages.map(page => ({ ...page, checked })))
+    setPages(prevPages => prevPages.map(page => ({ ...page, checked })))
   }
 
   const handlePageChange = (id: number, checked: boolean) => {
-    const updatedPages = pages.map(page => 
-      page.id === id ? { ...page, checked } : page
-    )
-    setPages(updatedPages)
-    // Update "All pages" checkbox based on individual page states
-    const allChecked = updatedPages.every(page => page.checked)
-    setAllPagesChecked(allChecked)
+
+    setPages(prevPages => {
+      const updatedPages = prevPages.map(page => 
+        page.id === id ? { ...page, checked } : page
+      )
+      const allChecked = updatedPages.every(page => page.checked)
+      setAllPagesChecked(allChecked)
+      return updatedPages
+    })
   }
 
   const handleDoneClick = () => {

@@ -46,13 +46,11 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
   
-  /* Custom colors */
   --color-blue-primary: #2469F6;
   --color-orange-button: #FFCE22;
   --color-orange-button-hover: #FFD84D;
   --color-border-gray: #EEEEEE;
   
-  /* Custom spacing */
   --spacing-22: 22px;
   --spacing-15: 15px;
   --spacing-10: 10px;
@@ -63,13 +61,10 @@
   --spacing-40: 40px;
   --spacing-25: 25px;
   
-  /* Custom font sizes */
   --font-size-14: 14px;
   
-  /* Custom line heights */
   --line-height-130: 130%;
   
-  /* Custom border radius */
   --radius-6: 6px;
   --radius-4: 4px;
 }
@@ -151,21 +146,50 @@
     @apply bg-background text-foreground;
   }
   
-  /* Checkbox checked state */
+  [data-slot="checkbox"][data-state="unchecked"] {
+    background-color: #FFFFFF !important;
+    border-color: #EEEEEE !important;
+  }
+  
+  [data-slot="checkbox"][data-state="unchecked"]:hover:not(:disabled) {
+    border-color: rgba(36, 105, 246, 0.5) !important;
+  }
+  
+  [data-slot="checkbox"][data-state="unchecked"]:focus-visible {
+    border-color: #2469F6 !important;
+    box-shadow: 0 0 0 2px rgba(36, 105, 246, 0.2) !important;
+  }
+  
+  [data-slot="checkbox"][data-state="unchecked"]:disabled {
+    background-color: #FFFFFF !important;
+    border-color: #EEEEEE !important;
+    opacity: 0.5 !important;
+  }
+  
   [data-slot="checkbox"][data-state="checked"] {
     background-color: #2469F6 !important;
     border-color: #2469F6 !important;
   }
   
-  /* Checkbox checked hover state */
-  [data-slot="checkbox"][data-state="checked"]:hover {
+  [data-slot="checkbox"][data-state="checked"]:hover:not(:disabled) {
     background-color: #5087F8 !important;
     border-color: #5087F8 !important;
+  }
+  
+  [data-slot="checkbox"][data-state="checked"]:focus-visible {
+    background-color: #2469F6 !important;
+    border-color: #2469F6 !important;
+    box-shadow: 0 0 0 2px rgba(36, 105, 246, 0.2) !important;
+  }
+  
+  [data-slot="checkbox"][data-state="checked"]:disabled {
+    background-color: #2469F6 !important;
+    border-color: #2469F6 !important;
+    opacity: 0.5 !important;
   }
 }
 
 @layer utilities {
-  /* Custom widths */
   .w-370 { width: 370px; }
   .w-340 { width: 340px; }
   .w-326 { width: 326px; }
@@ -173,27 +197,22 @@
   .w-40 { width: 40px; }
   .w-25 { width: 25px; }
   
-  /* Custom heights */
   .h-326 { height: 326px; }
   .h-42 { height: 42px; }
   .h-40 { height: 40px; }
   .h-25 { height: 25px; }
   
-  /* Custom padding */
   .pl-22 { padding-left: 22px; }
   .pr-15 { padding-right: 15px; }
   .py-10 { padding-top: 10px; padding-bottom: 10px; }
   
-  /* Custom font */
   .text-14 { font-size: 14px; }
   .leading-130 { line-height: 130%; }
   .tracking-0 { letter-spacing: 0px; }
   
-  /* Custom border radius */
   .rounded-6 { border-radius: 6px; }
   .rounded-4 { border-radius: 4px; }
   
-  /* Custom colors */
   .bg-orange-button { background-color: #FFCE22; }
   .bg-blue-primary { background-color: #2469F6; }
   .bg-blue-hover { background-color: #5087F8; }
@@ -201,9 +220,40 @@
   .border-gray-light { border-color: #EEEEEE; }
   .bg-gray-light { background-color: #EEEEEE; }
   
-  
-  /* Custom box shadow */
   .shadow-card {
     box-shadow: 0px 0px 4px rgba(20, 20, 20, 0.1), 0px 8px 15px rgba(20, 20, 20, 0.12);
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  [data-slot="button"][data-variant="orange"] {
+    background-color: #FFCE22 !important;
+    color: #000000 !important;
+  }
+  
+  [data-slot="button"][data-variant="orange"]:hover:not(:disabled) {
+    background-color: #FFD84D !important;
+  }
+  
+  [data-slot="button"][data-variant="orange"]:focus-visible {
+    background-color: #FFCE22 !important;
+    box-shadow: 0 0 0 2px rgba(255, 206, 34, 0.3) !important;
+  }
+  
+  [data-slot="button"][data-variant="orange"]:active:not(:disabled) {
+    background-color: #FFC700 !important;
+  }
+  
+  [data-slot="button"][data-variant="orange"]:disabled {
+    background-color: #FFCE22 !important;
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
   }
 }

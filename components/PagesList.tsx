@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useRef } from "react"
 import { PageListItem } from "./PageListItem"
 
 interface Page {
@@ -14,24 +15,34 @@ interface PagesListProps {
 }
 
 export function PagesList({ pages, onPageChange }: PagesListProps) {
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = 0
+    }
+  }, [])
+
   return (
     <>
-      {/* Line above page list */}
       <div className="h-px bg-gray-light mx-auto w-340"></div>
 
-      {/* Pages list */}
-      <div className="space-y-3 py-2 pl-22 pr-15 gap-1.5 w-370 flex-none order-0 grow-0">
-        {pages.map((page) => (
-          <PageListItem
-            key={page.id}
-            page={page}
-            onCheckedChange={onPageChange}
-          />
-        ))}
+      <div 
+        ref={scrollContainerRef}
+        className="overflow-y-auto max-h-[155px] w-full scrollbar-hide"
+      >
+        <div className="space-y-3 py-2 pl-22 pr-15">
+          {pages.map((page) => (
+            <PageListItem
+              key={page.id}
+              page={page}
+              onCheckedChange={onPageChange}
+            />
+          ))}
+        </div>
       </div>
 
-      {/* Line below page list */}
-      <div className="h-px bg-gray-light mx-auto w-340"></div>
+      <div className="h-px bg-gray-light mx-auto w-340 mb-0"></div>
     </>
   )
 }

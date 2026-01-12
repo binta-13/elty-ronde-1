@@ -27,21 +27,19 @@ export function PageSelectorCard({
 }: PageSelectorCardProps) {
   return (
     <div
-      className="relative flex flex-col items-start py-2.5 px-0 box-border bg-white border border-gray-light rounded-6 w-370 h-326 shadow-card"
+      className="relative flex flex-col items-start py-2.5 px-0 box-border bg-white border border-gray-light rounded-6 w-370 shadow-card"
     >
-      <div className="w-full space-y-4">
-        <AllPagesSection
-          checked={allPagesChecked}
-          onCheckedChange={onAllPagesChange}
-        />
+      <AllPagesSection
+        checked={allPagesChecked}
+        onCheckedChange={onAllPagesChange}
+      />
 
-        <PagesList
-          pages={pages}
-          onPageChange={onPageChange}
-        />
+      <PagesList
+        pages={pages}
+        onPageChange={onPageChange}
+      />
 
-        <DoneButton onClick={onDoneClick} />
-      </div>
+      <DoneButton onClick={onDoneClick} />
     </div>
   )
 }
